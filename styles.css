@@ -1,0 +1,33 @@
+nav ul li a {
+	text-decoration: none;
+	color:black;
+	float:left;
+	display:block;
+	padding:0px 0px;
+}
+
+nav ul {
+	list-style: none;
+	padding:0px;
+}
+
+footer {
+	
+}
+
+form-horizontal {
+	float:left;
+	background-color:;
+}
+
+div #wrapper {
+	background-color:;
+}
+h2 {
+	color:#000;
+}
+
+.form-actions button i {
+	color:;
+	
+}
