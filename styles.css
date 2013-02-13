@@ -1,33 +1,20 @@
-nav ul li a {
-	text-decoration: none;
-	color:black;
-	float:left;
-	display:block;
-	padding:0px 0px;
+header {
+	background:transparent url("images/logo.png") no-repeat;
+	padding: 10px 10px 120px 210px;
+}
+header a {
+	display:inline-block;
+	color:#8f0000;
+	-webkit-transition:-webkit-transform 0.25s, color 0.25s
 }
 
-nav ul {
-	list-style: none;
-	padding:0px;
+header a:hover {
+	color:#f50000;
+	-webkit-transform:rotate(10deg);
+	text-decoration:none;
 }
 
-footer {
-	
-}
-
-form-horizontal {
-	float:left;
-	background-color:;
-}
-
-div #wrapper {
-	background-color:;
-}
 h2 {
-	color:#000;
-}
-
-.form-actions button i {
-	color:;
-	
+	font-size:22px;
+	color:#df7777;
 }

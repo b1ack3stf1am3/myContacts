@@ -2,16 +2,19 @@
 // Must be called first to have accesss to any session data
 session_start();
 
-require 'functions.php';
+require('config/db.php');
+require('config/app.php');
+require('lib/functions.php');
+
 
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="vender/bootstrap/css/bootstrap.css" />
 		
 		<link rel="stylesheet" type="text/css" href="styles.css" />
-		<title>MyBands</title>
+		<title>MyContacts</title>
 	</head>
 	<body>
 		<div id="wrapper" class="container">

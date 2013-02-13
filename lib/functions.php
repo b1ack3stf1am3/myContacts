@@ -1,11 +1,19 @@
 <?php
 
+function open_db() {
+	return new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+}
+
+function format_phone($phone) {
+	return '('.substr($phone,0,3).') '.substr($phone,3,3).'-'.substr($phone,-4);
+}
+
 /**
  * Outputs an iput element with the given attribute values
  * This function also examines SESSION data for previously
  * entered values with the smae name
  */
-function input($name, $placeholder, $value=null) {
+function input($name, $placeholder, $value=null, $class='') {
 	if($value == null && isset($_SESSION['POST'][$name])) {
 		$value = $_SESSION['POST'][$name] ;
 		
