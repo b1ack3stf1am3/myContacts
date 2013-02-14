@@ -48,4 +48,4 @@ $conn->close();
 
 // Set location header
 
-//header("Location:./?p=list_contacts");
+header("Location:../?p=list_contacts");

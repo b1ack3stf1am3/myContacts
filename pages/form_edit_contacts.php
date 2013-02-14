@@ -1,5 +1,3 @@
-
-
 <h2>Edit Contacts</h2>
 <?php 
 $conn=open_db();
@@ -19,22 +17,22 @@ extract($contact);
 	<div class="control-group">
 	    <label class="control-label" for="firstname">First Name</label>
 	    <div class="controls">
-	    	<?php echo input('contact_firstname','First Name')?>
-	    	<?php echo input('contact_lastname','Last Name')?>
+	    	<input type="text" name="contact_firstname" value="<?php echo $contact_firstname ?>">
+	    	<input type="text" name="contact_lastname" value="<?php echo $contact_lastname ?>">
 	    </div>
 	 </div>
 	 <div class="control-group">
 	    <label class="control-label" for="email">Email</label>
 	    <div class="controls">
-	    	<?php echo input('contact_email','Email')?>
+	    	<input type="text" name="contact_email" value="<?php echo $contact_email ?>">
 	    </div>
 	  </div>
 	 <div class="control-group">
 	    <label class="control-label" for="phone">Phone Number</label>
 	    <div class="controls">
-	    	<?php echo input('contact_phone1','xxx',null,'phone span1')?>
-	    	<?php echo input('contact_phone2','xxx',null,'phone span2')?>
-	    	<?php echo input('contact_phone3','xxxx',null,'phone span3')?>
+	    	<input type="text" name="contact_phone1" value="<?php echo substr($contact_phone,0,3) ?>" />
+	    	<input type="text" name="contact_phone2" value="<?php echo substr($contact_phone,3,3) ?>" />
+	    	<input type="text" name="contact_phone3" value="<?php echo substr($contact_phone,-4) ?>" />
 	    </div>
 	 </div>
 	 <div class="form-actions">
