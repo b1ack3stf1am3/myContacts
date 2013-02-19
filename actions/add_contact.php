@@ -5,22 +5,38 @@
 
 <pre>POST: <?php print_r($_POST)?></pre>
 <?php
+
+$contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
+
 $required = array(
-		'contact_firstname',
-		'contact_lastname',
-		'contact_email',
-		'contact_phone1',
-		'contact_phone2',
-		'contact_phone3'
+		array(
+				'name'		 => 'contact_firstname',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
+
+		array(
+				'name'		 => 'contact_lastname',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
+		array(
+				'name'		 => 'contact_email',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
+		array(
+				'name'		 => 'contact_phone',
+				'type'		 => 'numeric',
+				'lengh'		 => '10',
+				'required'	 => 'true'	),
 );
 
 extract($_POST);
 
-$contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
+
 
 
 foreach($required as $r) {
 	if(!isset($_POST[$r]) || $_POST[$r] =='') {
+		
 		$_SESSION['message'] = array(
 				'type' => 'error',
 				'text' => 'Please provide all required information');
