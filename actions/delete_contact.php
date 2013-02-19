@@ -1,3 +1,4 @@
+<?php session_start();?>
 <pre>$_GET: <?php print_r($_GET) ?></pre>
 <?php
 
@@ -13,4 +14,8 @@ $conn->query($sql);
 $conn->close();
 
 //Redirect
-//header("Location:../?p=list_contacts");
+header("Location:../?p=list_contacts");
+
+$_SESSION['message'] = array(
+		'type' => 'error',
+		'text' => 'Your contact has been deleted.');

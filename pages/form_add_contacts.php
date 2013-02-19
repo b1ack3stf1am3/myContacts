@@ -23,6 +23,6 @@
 	 </div>
 	 <div class="form-actions">
 	 	<button type="submit" class="btn btn-small btn-primary" type="button">Add Contact</button>
-  		<button type="button" class="btn btn-small" type="button">Cancel</button>
+  		<button type="button" class="btn btn-small" type="button" onclick="window.history.go(-1)">Cancel</button>
 	 </div>
 </form>

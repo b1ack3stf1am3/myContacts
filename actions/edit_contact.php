@@ -1,4 +1,7 @@
+<?php session_start();?>
+
 <pre><?php print_r($_POST)?></pre>
+
 <?php
 
 extract($_POST);
@@ -14,3 +17,7 @@ $conn->query($sql);
 $conn->close();
 
 header("Location:../?p=list_contacts");
+
+$_SESSION['message'] = array(
+		'type' => 'info',
+		'text' => 'You have edited your contact');

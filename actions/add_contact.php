@@ -1,5 +1,6 @@
 <?php
 		require('../config/db.php'); 
+		session_start();
 ?>
 
 <pre>POST: <?php print_r($_POST)?></pre>
@@ -15,20 +16,24 @@ $required = array(
 
 extract($_POST);
 
+$contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
+
 
 foreach($required as $r) {
 	if(!isset($_POST[$r]) || $_POST[$r] =='') {
 		$_SESSION['message'] = array(
-				'type' => 'danger',
+				'type' => 'error',
 				'text' => 'Please provide all required information');
 	
 		$_SESSION['POST'] = $_POST;
 		
 		header('Location:../?p=form_add_contacts');
 		
-		
-		
 		die();
+	} else {
+		$_SESSION['message'] = array(
+				'type' => 'success',
+				'text' => 'Your contact has been added');
 	}
 }
 
@@ -37,7 +42,7 @@ foreach($required as $r) {
 // Connect to DB
 $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
-$contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
+
 //Add contact to DB
 $sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone)";
 $conn->query($sql);
