@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+require('../actions/fields.php');?>
 
 <pre><?php print_r($_POST)?></pre>
 
