@@ -21,6 +21,36 @@
 	    	<?php echo input('contact_phone3','xxxx',null,'phone span3')?>
 	    </div>
 	 </div>
+	 <div class="control-group">
+	    <label class="control-label" for="group_id">Group</label>
+	    <div class="controls">
+	    	<select name="group_id">
+	    	<option value="0"></option>
+	    	<?php 
+	    	// Connect to DB
+	    	$conn=open_db();
+	    	// Query groups table
+	    	$sql = "SELECT * FROM groups";
+	    	$results = $conn->query($sql);
+	    	extract($group);
+	    	
+	    	// Loop over resulet set
+	    	$options = array(
+	    			'0' => 'Select a Group'
+	    	);
+	    	$options[$group_id] = $group_name;
+	    	
+	    	while(($group = $results->fetch_assoc()) != null) {
+	    	echo "<option value=\"$group_id\">\"$group_name\"</option>";
+	    	};
+	    	echo dropdown('group_id', $options);
+	    	
+	    	// Close DB connection
+	    	$conn->close();
+	    	?>
+	    	</select>
+	    </div>
+	 </div>
 	 <div class="form-actions">
 	 	<button type="submit" class="btn btn-small btn-primary" type="button">Add Contact</button>
   		<button type="button" class="btn btn-small" type="button" onclick="window.history.go(-1)">Cancel</button>

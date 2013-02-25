@@ -7,16 +7,39 @@
 <pre>POST: <?php print_r($_POST)?></pre>
 <?php
 
+extract($_POST);
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
 
+$fields = array(
+		array(
+				'name'		 => 'contact_firstname',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
 
-extract($_POST);
+		array(
+				'name'		 => 'contact_lastname',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
+		array(
+				'name'		 => 'contact_email',
+				'type'		 => 'text',
+				'required'	 => 'true'	),
+		array(
+				'name'		 => 'contact_phone',
+				'type'		 => 'numeric',
+				'lengh'		 => '10',
+				'required'	 => 'true'	),
+);
+
+
+
 
 
 
 
 foreach($fields as $r) {
-	if($r['required'] == 'true')
+	if($r['required'] == 'true');
+}
 		
 
 
@@ -36,4 +59,4 @@ $conn->close();
 
 // Set location header
 
-header("Location:../?p=list_contacts");
+//header("Location:../?p=list_contacts");
