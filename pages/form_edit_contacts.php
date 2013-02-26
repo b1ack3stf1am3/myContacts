@@ -6,6 +6,7 @@ $results = $conn->query($sql);
 
 $contact = $results->fetch_assoc();
 extract($contact);
+$conn->close();
 ?>
 
 <form class="form-horizontal" action="./actions/edit_contact.php" method="post">
@@ -33,6 +34,15 @@ extract($contact);
 	    	<input type="text" name="contact_phone1" value="<?php echo substr($contact_phone,0,3) ?>" />
 	    	<input type="text" name="contact_phone2" value="<?php echo substr($contact_phone,3,3) ?>" />
 	    	<input type="text" name="contact_phone3" value="<?php echo substr($contact_phone,-4) ?>" />
+	    </div>
+	 </div>
+	  <div class="control-group">
+	    <label class="control-label" for="group_id">Group</label>
+	    <div class="controls">
+	    	<?php 
+	    	$options = get_options('group',"$group_id",'Select a Group');
+	    	echo dropdown('group_id', $options);
+	    	?>
 	    </div>
 	 </div>
 	 <div class="form-actions">

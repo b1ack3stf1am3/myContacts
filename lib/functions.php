@@ -50,7 +50,7 @@ function dropdown($name, $options) {
 	
 	// Add option elements to select element
 	foreach($options as $value => $text) {
-		if(isset($_SESSION['POST'][$name]) && $_SESSION['FORM'][$name] == $value) {
+		if(isset($_SESSION['POST'][$name]) && $_SESSION['POSTx'][$name] == $value) {
 			unset($_SESSION['POST'][$name]);
 			$selected = 'selected="selected"';
 		} else {
@@ -78,5 +78,40 @@ function radio($name, $options) {
 	
 	return $radio;
 }
+
+
+
+/**
+ * Query the provided tabe for all rows, sorted by name, useing the fields table_id and table_name
+ * @param unknown_type $table name of DB table
+ * @param unknown_type $default_value value of first optoin (1st key in array)
+ * @param unknown_type $default_name name of firwst option (1st value in array)
+ */
+function get_options($table,$default_value,$default_name='Select') {
+	$options = array($default_value => $default_name);
+	
+	$id_field = $table.'_id';
+	$name_field = $table.'_name';
+	
+	// Connect to DB
+	$conn=open_db();
+	
+	
+	//Query tabe for id's and names
+	$sql = "SELECT $id_field, $name_field FROM {$table}s ORDER BY $name_field";
+	$results = $conn->query($sql);
+	
+	// Loop ove rresult set, adding all rows to $options
+	while(($row = $results->fetch_assoc()) != null) {
+		$key = $row[$id_field];
+		$value = $row[$name_field];
+		$options[$key] = $value;
+	}
+	// Close DB connections
+	$conn->close();
+	
+	return $options;
+}
+
 
 ?>

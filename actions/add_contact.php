@@ -9,6 +9,7 @@
 
 extract($_POST);
 $contact_phone = $contact_phone1.$contact_phone2.$contact_phone3;
+$_POST['contact_phone'] = $contact_phone;
 
 $fields = array(
 		array(
@@ -38,7 +39,15 @@ $fields = array(
 
 
 foreach($fields as $r) {
-	if($r['required'] == 'true');
+	if($r['required'] == 'true') {
+		if($_POST[$r['name']] == '') {
+			$_SESSION['message'] = array(
+					'type' => 'error',
+					'text' => 'Please fill all the fields with valid information');
+			$_SESSION['POST'] = $_POST;
+			header("Location:../?p=form_add_contacts");
+		} 
+	}
 }
 		
 
@@ -53,10 +62,10 @@ $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 $sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone)";
 $conn->query($sql);
 //Query DB
-
+$results = $conn->query($sql);
 // Close connection
 $conn->close();
 
 // Set location header
 
-//header("Location:../?p=list_contacts");
+header("Location:../?p=list_contacts");
