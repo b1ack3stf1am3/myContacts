@@ -1,6 +1,15 @@
 <h2>Groups</h2>
-<ul>
-	<li><a href="?p=group&id=1" >Friends</a></li>
-	<li><a href="?p=group&id=2" >Coworkers</a></li>
-	<li><a href="?p=group&id=3" >Stalkers</a></li>
+<ul class="nav nav-tabs nav-stacked">
+	<?php 
+	$conn=open_db();
+	$sql='SELECT * FROM groups ORDER BY group_name';
+	$results = $conn->query($sql);
+	
+	while(($group = $results->fetch_assoc) != null) {
+		extract($group);
+	?>
+	
+	
+	<?php };
+	$conn->close();?>
 </ul>

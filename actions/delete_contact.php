@@ -7,11 +7,13 @@ extract($_GET);
 $conn = new mysqli('localhost','mycontacts_user','BPtJFH7hpnnMcKdx','mycontacts');
 
 // Execute th3e query
-$sql = "DELETE FROM contacts WHERE contact_id={$_GET['id']}";
+$sql = "DELETE FROM contacts WHERE contact_id=$id";
 $conn->query($sql);
 
 // Close the connection
 $conn->close();
+
+
 
 //Redirect
 header("Location:../?p=list_contacts");

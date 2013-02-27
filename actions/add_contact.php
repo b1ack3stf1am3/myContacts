@@ -59,7 +59,7 @@ $conn = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
 
 //Add contact to DB
-$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone)";
+$sql = "INSERT INTO contacts (contact_firstname,contact_lastname,contact_email,contact_phone,group_id) VALUES ('$contact_firstname','$contact_lastname','$contact_email',$contact_phone,$group_id)";
 $conn->query($sql);
 //Query DB
 $results = $conn->query($sql);
