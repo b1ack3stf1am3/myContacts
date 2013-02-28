@@ -1,3 +1,15 @@
+<?php 
+$where = '';
+if(isset($_GET['q']) && $_GET['q'] != '') {
+	extract($_GET);
+	$where = "WHERE contact_lastname LIKE '%$q%' OR contact_firstname LIKE '%$q%' ";
+};
+
+?>
+
+
+
+
 <h2>Contacts</h2>
 <table class="table">
 	<thead>
@@ -15,9 +27,9 @@ $conn=open_db();
 
 // Query DB
 
-$sql = 'SELECT * FROM contacts LEFT JOIN groups ON
-		contacts.group_id=groups.group_id ORDER BY 
-		contact_lastname,contact_firstname';
+$sql = "SELECT * FROM contacts LEFT JOIN groups ON
+		contacts.group_id=groups.group_id $where ORDER BY 
+		contact_lastname,contact_firstname";
 
 $results = $conn->query($sql);
 
