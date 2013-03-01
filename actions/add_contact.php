@@ -1,10 +1,11 @@
+<pre><?php print_r($_POST);?></pre>
 <?php
 		require('../config/db.php');
 		require('../actions/fields.php'); 
 		session_start();
 ?>
 
-<pre>POST: <?php print_r($_POST)?></pre>
+
 <?php
 
 extract($_POST);
@@ -45,9 +46,10 @@ foreach($fields as $r) {
 					'type' => 'error',
 					'text' => 'Please fill all the fields with valid information');
 			$_SESSION['POST'] = $_POST;
-			header("Location:../?p=form_add_contacts");
+			//header("Location:../?p=form_add_contacts");
 		} 
 	}
+	
 }
 		
 
@@ -68,4 +70,4 @@ $conn->close();
 
 // Set location header
 
-header("Location:../?p=list_contacts");
+//header("Location:../?p=list_contacts");

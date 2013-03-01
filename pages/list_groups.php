@@ -24,7 +24,7 @@
 		extract($group);
 		echo "<tr>";
 		echo "<td class=\"\"><a href=\"./?p=group&id=$group_id\">$group_name</a></td>";
-		echo "<td><span class=\"label label-inverse\">$num_contacts</span></td>";
+		echo "<td><span class=\"badge badge-inverse\">$num_contacts</span></td>";
 		echo "<td class=\"\"><a href=\"./?p=form_edit_group&id=$group_id\"><i class=\"icon-edit\"></i>Edit</a>
 			 <a href=\"actions/delete_group.php?id=$group_id\"><i class=\"icon-edit\"></i>Delete</a></td>";
 		echo "</tr>";
